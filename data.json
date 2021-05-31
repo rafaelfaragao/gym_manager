@@ -1,0 +1,25 @@
+{
+  "instructors": [
+    {
+      "avatar_url": "http://google.com.br",
+      "name": "Rafael",
+      "birth": "1987-11-18",
+      "gender": "M",
+      "services": "Crossfit"
+    },
+    {
+      "avatar_url": "http://google.com.br",
+      "name": "Thammyres",
+      "birth": "1987-11-18",
+      "gender": "F",
+      "services": "Academia"
+    },
+    {
+      "avatar_url": "http://google.com.br",
+      "name": "Thammyres Valeria",
+      "birth": "1987-11-15",
+      "gender": "F",
+      "services": "Academia, Crossfit"
+    }
+  ]
+}
