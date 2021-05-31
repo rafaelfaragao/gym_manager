@@ -5,21 +5,16 @@
       "name": "Rafael",
       "birth": "1987-11-18",
       "gender": "M",
-      "services": "Crossfit"
+      "services": "Crossfit",
+      "created_at": 1622426454379
     },
     {
       "avatar_url": "http://google.com.br",
       "name": "Thammyres",
-      "birth": "1987-11-18",
+      "birth": 563932800000,
       "gender": "F",
-      "services": "Academia"
-    },
-    {
-      "avatar_url": "http://google.com.br",
-      "name": "Thammyres Valeria",
-      "birth": "1987-11-15",
-      "gender": "F",
-      "services": "Academia, Crossfit"
+      "services": "Academia",
+      "created_at": 1622426527003
     }
   ]
 }
