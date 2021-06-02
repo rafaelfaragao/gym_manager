@@ -137,7 +137,7 @@ header {
     display: inline-block;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 12px;    
 }
 
 /* FORM */
@@ -153,6 +153,7 @@ input {
 input[type="radio"]{
     width: initial;
     margin-right: 4px;
+    
 }
 
 input::placeholder {

@@ -1,20 +1,13 @@
 {
   "instructors": [
     {
+      "id": 1,
       "avatar_url": "http://google.com.br",
       "name": "Rafael",
-      "birth": "1987-11-18",
+      "birth": 564192000000,
       "gender": "M",
-      "services": "Crossfit",
-      "created_at": 1622426454379
-    },
-    {
-      "avatar_url": "http://google.com.br",
-      "name": "Thammyres",
-      "birth": 563932800000,
-      "gender": "F",
-      "services": "Academia",
-      "created_at": 1622426527003
+      "services": "Academia, Crossfit",
+      "created_at": 1622672748368
     }
   ]
 }
