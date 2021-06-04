@@ -8,6 +8,15 @@
       "gender": "M",
       "services": "Academia, Crossfit",
       "created_at": 1622767036822
+    },
+    {
+      "id": 2,
+      "avatar_url": "https://images.unsplash.com/photo-1556817411-351bfa28d6d3?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIyNzczNzc3&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=500",
+      "name": "Thammyres",
+      "birth": 563932800000,
+      "gender": "F",
+      "services": "Corrida, Trilha",
+      "created_at": 1622773813649
     }
   ]
 }
