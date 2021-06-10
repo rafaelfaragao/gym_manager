@@ -2,6 +2,21 @@ const fs = require('fs')
 const data = require("./data.json")
 const { age, date } = require("./utils")
 
+//index
+exports.index = function(req, res){
+    let dataTable = []
+
+    for (instructor in data.instructors ) {
+        let newInstructor = {
+           ...data.instructors[instructor],
+            services: data.instructors[instructor].services.split(","),
+        }
+        dataTable.push(newInstructor)
+    }
+
+    return res.render("instructors/index", {instructors: dataTable})
+}
+
 //show
 exports.show = function(req,res) {
     //req.params
@@ -74,7 +89,7 @@ exports.edit = function(req,res) {
     return res.render('instructors/edit', {instructor})
 }
 
-// Put
+// Put - update
 exports.put = function(req,res) {
     const {id} = req.body
     
@@ -92,7 +107,8 @@ exports.put = function(req,res) {
     const instructor = {
         ...foundInstructor,
         ...req.body,
-        birth: Date.parse(req.body.birth)
+        birth: Date.parse(req.body.birth),
+        id: Number(req.body.id)
     }
 
     data.instructors[index] = instructor

@@ -70,6 +70,9 @@ header {
     background-color: white;
     width: 800px;
     min-height: 400px;
+
+    border-radius: 6px;
+    overflow: auto;
     /*espaçamento e alinhamento ao centro*/
     margin: 45px auto;
 
@@ -108,6 +111,7 @@ header {
 .details .item:last-child {
     border:none;
 }
+
 .details h3,
 .details .item div:nth-child(1) {
     font-size: 14px;
@@ -129,7 +133,11 @@ header {
     color: var(--primary-color);
 }
 
-.details .item span {
+.details .item span + span {
+    margin-left: 10px;
+}
+
+.services {
     padding: 8px 16px;
     background-color: var(--secondary-color);
     border-radius: 16px;
@@ -155,7 +163,6 @@ input {
 input[type="radio"]{
     width: initial;
     margin-right: 4px;
-    
 }
 
 input::placeholder {
@@ -169,7 +176,7 @@ a.button{
     background-color: var(--primary-color);
     border-radius: 4px;
     color: white;
-    margin-top: 32px;
+    margin-top: 24px;
     width: 100%;
     font-size: 16px;
 }
@@ -194,4 +201,67 @@ a.button {
 #form-delete button[type="submit"]:hover{
     background-color: rgb(223, 87, 87);
     font-weight: bold;
+}
+
+/* INDEX INSTRUCTORS */
+
+.table-container{
+    display: block;
+    padding: 40px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.table-container table {
+    border-spacing: 0;
+}
+
+.table-container thead tr th {
+    text-align: left;
+}
+
+td, th {
+    padding: 16px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+th {
+    text-transform: uppercase;
+    color: #777;
+    font-size: 14px;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr td:first-child {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+}
+
+tbody tr td:first-child span {
+    width: 48px;
+    height: 48px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 3px 1px 6px -4px black;
+    border: 2px solid white; 
+}
+
+tbody tr td:last-child a {
+    background-color: var(--primary-color);
+    padding: 8px 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.table-container thead tr th:last-child, 
+td:last-child {
+    text-align: center;
 }
