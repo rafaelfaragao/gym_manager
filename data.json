@@ -28,5 +28,17 @@
       "created_at": 1623115254424
     }
   ],
-    "members":[]
+  "members": [
+    {
+      "id": 1,
+      "avatar_url": "https://images.unsplash.com/photo-1556817411-83e6dd70a0b8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIzNTQ4Mjc0&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=500",
+      "name": "Rafael Felix",
+      "email": "teste@teste.com",
+      "birth": 564192000000,
+      "gender": "M",
+      "blood": "B0",
+      "weight": "80",
+      "height": "175"
+    }
+  ]
 }

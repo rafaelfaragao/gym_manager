@@ -152,7 +152,7 @@ header {
 
 /* FORM */
 
-input {
+input, select {
     width: 100%;
     outline: none;
     color: #555;
@@ -167,7 +167,7 @@ input[type="radio"]{
 
 input::placeholder {
     font-size: 16px;
-    font-weight: notmal;
+    font-weight: normal;
 }
 
 button[type="submit"], 

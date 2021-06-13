@@ -4,35 +4,8 @@ const { age, date } = require("../utils")
 
 //index
 exports.index = function(req, res){
-    let dataTable = []
-
-    for (member in data.members ) {
-        let newMember = {
-           ...data.members[member],
-            services: data.members[member].services.split(","),
-        }
-        dataTable.push(newMember)
-    }
-
-    return res.render("members/index", {members: dataTable})
-}
-
-//show
-exports.show = function(req,res) {
-    //req.params
-    const {id} = req.params
-
-    const foundMember = data.members.find(function(member){
-        return member.id == id
-    })
-    if(!foundMember) return res.send("Member not found")
-
-    const member = {
-        ...foundMember,
-        services:foundMember.services.split(","),
-    }
-
-    return res.render("members/show", {member})
+    console.log(data.members)
+    return res.render("members/index", {members: data.members})
 }
 
 //create
@@ -49,31 +22,60 @@ exports.post = function(req,res) {
                 return res.send("Please, fill all fields!")
             }
         }
-
-        let {name, avatar_url, birth, gender, services} = req.body
         
-        birth = Date.parse(birth)
-        const created_at = Date.now()
-        const id = Number(data.members.length + 1)
-       
+        birth = Date.parse(req.body.birth)
+        
+        let id = 1
+        const lastMember = data.members[data.members.length - 1]
+        
+        if (lastMember) {
+            id = lastMember.id + 1
+        }
+
         data.members.push({
             id,
-            avatar_url,
-            name,
+            ...req.body,
             birth,
-            gender,
-            services,
-            created_at
         })
        
         fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err){
             if(err) return res.send("Write file error!!")
     
-            return res.redirect("/members")
+            return res.redirect(`/members/${id}`)
         })
+}
 
-         //return res.send(req.body)
+//show
+exports.show = function(req,res) {
+    //req.params
+    const {id} = req.params
+
+    const foundMember = data.members.find(function(member){
+        return member.id == id
+    })
+    if(!foundMember) return res.send("Member not found")
+
+    function bloodType(type) {
+        const bloods = {
+            A1: "A+",
+            A0: "A-",
+            B1: "B+",
+            B0: "B-",
+            AB1: "AB+",
+            AB0: "AB-",
+            O1: "O+",
+            O0: "O-",
+        }
+        return bloods[type]        
     }
+
+    const member = {
+        ...foundMember,
+        birth: date(foundMember.birth).birthDay,
+        blood: bloodType(foundMember.blood),
+    }
+    return res.render("members/show", {member})
+}
 
 //Edit
 exports.edit = function(req,res) {
@@ -86,7 +88,7 @@ exports.edit = function(req,res) {
 
     const member = {
         ...foundMember,
-        birth: date(foundMember.birth) //yyyy-mm-dd
+        birth: date(foundMember.birth).iso //yyyy-mm-dd
     }
 
     return res.render('members/edit', {member})
