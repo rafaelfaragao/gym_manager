@@ -36,7 +36,14 @@ exports.post = function(req,res) {
         
         birth = Date.parse(birth)
         const created_at = Date.now()
-        const id = Number(data.instructors.length + 1)
+        
+        let id = 1
+        const lastInstructor = data.instructors[data.instructors.length - 1]
+        
+        if (lastInstructor) {
+            id = lastInstructor.id + 1
+        }
+
        
         data.instructors.push({
             id,
