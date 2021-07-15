@@ -3,8 +3,8 @@ const db = require('../../config/db')
 
 module.exports = {
   all(callback) {
-    db.query(`SELECT * FROM instructors`, function (err, results) {
-      if (err) return res.send("Database error!")
+    db.query(`SELECT * FROM instructors ORDER BY id ASC`, function (err, results) {
+      if(err) throw `Database Error! ${err}`
 
       callback(results.rows)
     })
@@ -23,16 +23,40 @@ module.exports = {
             `
 
     db.query(query, data, function (err, results) { //o data são os Values da query
-      if (err) return res.send("Databse Error!")
+      if(err) throw `Database Error! ${err}`
 
       callback(results.rows[0])
     })
   },
   find(id, callback){
     db.query(`SELECT * FROM instructors WHERE id = $1`, [id], function(err, results){
-      if(err) return res.send("Database Error!")
+      if(err) throw `Database Error! ${err}`
 
       callback(results.rows[0])
+    })
+  },
+  update(data, callback){
+    const query = `
+      UPDATE instructors SET
+        avatar_url=($1),
+        name=($2),
+        birth=($3),
+        gender=($4),
+        services=($5) 
+      WHERE id = $6
+    `
+
+    db.query(query, data, function (err, results){
+      if(err) throw `Database Error! ${err}`
+
+      callback()
+    })
+  },
+  delete(id, callback){
+    db.query(`DELETE FROM instructors WHERE id = $1`, [id], function (err, results){
+      if(err) throw `Database Error! ${err}`
+
+      callback()
     })
   }
 }
