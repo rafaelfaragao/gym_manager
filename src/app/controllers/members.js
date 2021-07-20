@@ -1,4 +1,4 @@
-const { age, date } = require("../../lib/utils")
+const { age, date, bloodTypeName } = require("../../lib/utils")
 
 const Member = require('../models/Member')
 
@@ -9,7 +9,9 @@ module.exports = {
         })
     },
     create(req,res){
-        return res.render('members/create')
+        Member.instructorsSelectOptions(function(options){
+            return res.render('members/create', {instructorOptions: options})
+        })
     },
     post(req,res){
         const keys = Object.keys(req.body)
@@ -28,7 +30,8 @@ module.exports = {
             date(req.body.birth).iso,
             req.body.blood,
             req.body.weight,
-            req.body.height
+            req.body.height,
+            req.body.instructor
         ]
 
         Member.create(data, function(member){
@@ -41,8 +44,10 @@ module.exports = {
             if(!member) return res.send("Member not found!")
 
             member.birth = date(member.birth).birthDay
-            
-            return res.render("members/show", {member})
+            member.blood = bloodTypeName(member.blood)
+            Member.instructorsSelectOptions(function(options){
+                return res.render('members/show', {member, instructorOptions: options})
+            })
         })
     },
     edit(req,res){
@@ -51,7 +56,9 @@ module.exports = {
 
             member.birth = date(member.birth).iso
 
-            return res.render("members/edit", {member})
+            Member.instructorsSelectOptions(function(options){
+                return res.render('members/edit', {member, instructorOptions: options})
+            })
         })
     },
     put(req,res){
@@ -72,6 +79,7 @@ module.exports = {
             req.body.blood,
             req.body.weight,
             req.body.height,
+            req.body.instructor,
             req.body.id
         ]
 

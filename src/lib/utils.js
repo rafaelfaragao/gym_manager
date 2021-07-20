@@ -32,5 +32,19 @@ module.exports = {
             birthDay: `${day}/${month}`,
             format: `${day}/${month}/${year}`
         }
+    },
+    bloodTypeName(blood) {
+        Blood = {
+            A1: 'A+',
+            A0: 'A-',
+            B1: 'B+',
+            B0: 'B-',
+            AB1: 'AB+',
+            AB0: 'AB-',
+            O1: 'O+',
+            O0: 'O-',
+            default: 'Tipo sanguíneo não existe.'
+        }
+        return Blood[blood] || Blood.default
     }
 }
